@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import PropTypes from "prop-types";
 
@@ -9,14 +10,14 @@ export default function Navbar(props) {
       data-bs-theme="dark"
     >
       <div className="container-fluid">
-        <a
+        <Link
           className={`navbar-brand text-${
             props.mode === "light" ? "dark" : "light"
           }`}
-          href="/"
+          to="/"
         >
           {props.title}
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -31,26 +32,24 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a
+              <Link
                 className={`nav-link active text-${
                   props.mode === "light" ? "dark" : "light"
                 }`}
-                aria-current="page"
-                href="/"
+                to="/"
               >
                 {props.link1}
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a
+              <Link
                 className={`nav-link  text-${
                   props.mode === "light" ? "dark" : "light"
                 }`}
-                aria-current="page"
-                href="/"
+                to="/about"
               >
                 {props.link2}
-              </a>
+              </Link>
             </li>
           </ul>
           {/* <form className="d-flex bg-dark" role="search">
@@ -65,11 +64,19 @@ export default function Navbar(props) {
             </button>
           </form> */}
         </div>
+        <button
+          type="button"
+          className="btn btn-outline-danger m-3"
+          onClick={props.red}
+        >
+          change dark mode
+        </button>
         <div className="form-check form-switch">
           <input
             className="form-check-input"
             type="checkbox"
             role="switch"
+            aria-checked="mixed"
             id="flexSwitchCheckDefault"
             onClick={props.toggle}
           />
@@ -79,7 +86,7 @@ export default function Navbar(props) {
             }`}
             htmlFor="flexSwitchCheckDefault"
           >
-            Toggle Mode
+            Convert to dark mode
           </label>
         </div>
       </div>
